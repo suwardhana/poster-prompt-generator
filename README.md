@@ -1,73 +1,131 @@
-# React + TypeScript + Vite
+# Poster Prompt Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based web application that generates AI-optimized prompts for creating stunning event posters. Perfect for generating prompts for AI image generation tools like DALL-E, Midjourney, or Stable Diffusion.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Form Interface**: Easy-to-use form for entering event details
+- **Multiple Design Styles**: Choose from 6 different poster styles:
+  - Modern: Clean contemporary design with minimalist aesthetics
+  - Formal: Elegant professional layouts with sophisticated typography
+  - Playful: Vibrant energetic designs with creative layouts
+  - Minimalist: Ultra-clean designs with abundant white space
+  - Vintage: Retro nostalgic designs with aged textures
+  - Bold: High-impact designs with dramatic contrasts
 
-## React Compiler
+- **Real-time Prompt Generation**: Instantly generates optimized prompts as you type
+- **Glass Morphism UI**: Modern, elegant interface with glass-like components
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Copy-to-Clipboard**: Easy copying of generated prompts for use in AI tools
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: React 19 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: CSS with modern features
+- **Package Manager**: Bun
+- **Deployment**: GitHub Actions with FTP deployment
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- [Bun](https://bun.sh/) (latest version)
+- Node.js 18+ (if not using Bun)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd poster-prompt-generator
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+```bash
+bun install
 ```
+
+3. Start the development server:
+```bash
+bun run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+### Building for Production
+
+```bash
+bun run build
+```
+
+The built files will be in the `dist/` directory.
+
+## Usage
+
+1. **Fill in Event Details**:
+   - Speaker Name
+   - Event Name
+   - Date & Time
+   - Location
+   - Contact Information
+
+2. **Choose a Style**: Select from the available poster styles that best fits your event
+
+3. **Copy the Generated Prompt**: Use the generated prompt in your favorite AI image generation tool
+
+4. **Generate Your Poster**: Paste the prompt into tools like:
+   - DALL-E
+   - Midjourney
+   - Stable Diffusion
+   - Adobe Firefly
+   - Any other AI image generator
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── EventForm/          # Form components for event data input
+│   ├── Layout/             # Layout components (GlassContainer)
+│   └── PromptDisplay/      # Component for displaying generated prompts
+├── hooks/
+│   └── usePromptGenerator.ts # Custom hook for prompt generation logic
+├── types/
+│   └── index.ts           # TypeScript type definitions
+├── utils/
+│   └── promptTemplates.ts # Prompt templates and generation utilities
+├── App.tsx                # Main application component
+└── main.tsx              # Application entry point
+```
+
+## Deployment
+
+The project is configured for automatic deployment using GitHub Actions. On every push to the repository:
+
+1. The project is built using Bun
+2. Built files are deployed via FTP to the hosting server
+3. The live site is updated automatically
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes and commit: `git commit -m 'Add feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request
+
+## Development Scripts
+
+- `bun run dev` - Start development server
+- `bun run build` - Build for production
+- `bun run preview` - Preview production build
+- `bun run lint` - Run ESLint
+
+## License
+
+This project is private and not licensed for public use.
+
+## Support
+
+For questions or support, please open an issue in the repository.
