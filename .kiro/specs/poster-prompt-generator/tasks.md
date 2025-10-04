@@ -75,8 +75,8 @@
   - Test edge cases with missing or invalid data
   - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [-] 5. Build prompt display component
-  - [-] 5.1 Create PromptDisplay component
+- [x] 5. Build prompt display component
+  - [x] 5.1 Create PromptDisplay component
     - Display generated prompt in styled container
     - Implement real-time updates when form data changes
     - Add character count and prompt structure indicators
@@ -84,7 +84,7 @@
     - use mpc chrome-devtools to verify the UI result from your changes and debugging
     - _Requirements: 3.1, 3.2_
   
-  - [ ] 5.2 Add copy-to-clipboard functionality
+  - [x] 5.2 Add copy-to-clipboard functionality
     - Implement one-click copy button with visual feedback
     - Add success/error states for copy operations
     - Ensure clipboard API compatibility across browsers
@@ -96,11 +96,13 @@
   - Test real-time update behavior
   - _Requirements: 3.1, 3.2, 3.4_
 
-- [ ] 6. Integrate components and finalize application
-  - [ ] 6.1 Wire up form and prompt display components
+- [-] 6. Integrate components and finalize application
+  - [-] 6.1 Wire up form and prompt display components
     - Connect EventForm to PromptDisplay through shared state
     - Implement proper data flow and state management
     - Ensure real-time updates work smoothly
+    - no need to run vite or npm run dev, because server is already running on http://localhost:5173/
+    - use mpc chrome-devtools to verify the UI result from your changes and debugging
     - _Requirements: 3.1, 3.2_
   
   - [ ] 6.2 Add responsive design and mobile optimization

@@ -1,4 +1,344 @@
-/* PromptDisplay styles - will be implemented in task 5 */
+/* PromptDisplay Component Styles */
 .prompt-display {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header Section */
+.prompt-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.prompt-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+}
+
+.prompt-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Content Section */
+.prompt-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.prompt-text-container {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+.prompt-text-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.prompt-text {
+  margin: 0;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: none;
+  border: none;
+  outline: none;
+  resize: none;
+  width: 100%;
+  min-height: 120px;
+}
+
+/* Actions Section */
+.prompt-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.copy-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.copy-button:hover::before {
+  left: 100%;
+}
+
+.copy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.copy-button:active {
+  transform: translateY(0);
+}
+
+.copy-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.copy-button.success {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+}
+
+.copy-button.error {
+  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+}
+
+/* Icons */
+.copy-icon,
+.success-icon,
+.error-icon {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+/* Placeholder State */
+.prompt-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  color: rgba(255, 255, 255, 0.6);
+  min-height: 200px;
+}
+
+.placeholder-icon {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.placeholder-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.prompt-placeholder h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.prompt-placeholder p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 300px;
+}
+
+/* Footer Section */
+.prompt-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+.prompt-tip {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
   padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prompt-tip strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .prompt-display {
+    gap: 1rem;
+  }
+  
+  .prompt-header h2 {
+    font-size: 1.25rem;
+  }
+  
+  .prompt-stats {
+    gap: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 1rem;
+  }
+  
+  .prompt-text-container {
+    padding: 1rem;
+  }
+  
+  .prompt-text {
+    font-size: 0.8rem;
+    min-height: 100px;
+  }
+  
+  .copy-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.85rem;
+  }
+  
+  .prompt-placeholder {
+    padding: 2rem 1rem;
+    min-height: 150px;
+  }
+  
+  .placeholder-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .prompt-placeholder h3 {
+    font-size: 1.1rem;
+  }
+  
+  .prompt-placeholder p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .prompt-stats {
+    gap: 1.5rem;
+  }
+  
+  .prompt-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* Animation for real-time updates */
+@keyframes prompt-update {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.prompt-text-container {
+  animation: prompt-update 0.3s ease-out;
+}
+
+/* Focus states for accessibility */
+.copy-button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .prompt-text-container {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .prompt-text {
+    color: rgba(255, 255, 255, 1);
+  }
+  
+  .stat-value {
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .copy-button,
+  .prompt-text-container {
+    animation: none;
+    transition: none;
+  }
+  
+  .copy-button:hover {
+    transform: none;
+  }
+  
+  .copy-button::before {
+    display: none;
+  }
 }
