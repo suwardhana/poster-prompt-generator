@@ -1,0 +1,6 @@
+/* GlassContainer styles - will be implemented in task 2 */
+.glass-container {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
