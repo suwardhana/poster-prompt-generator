@@ -50,20 +50,20 @@
   - Test dropdown selection behavior
   - _Requirements: 1.1, 2.1_
 
-- [-] 4. Create prompt generation system
-  - [ ] 4.1 Build prompt template utilities
+- [x] 4. Create prompt generation system
+  - [x] 4.1 Build prompt template utilities
     - Create style-specific prompt templates with appropriate keywords
     - Implement base prompt structure for AI image generation
     - Add technical parameters for optimal AI generation
     - _Requirements: 5.1, 5.2, 5.3, 5.4_
   
-  - [ ] 4.2 Implement usePromptGenerator custom hook
+  - [x] 4.2 Implement usePromptGenerator custom hook
     - Create hook to generate prompts based on event data and style
     - Add real-time prompt updates when form data changes
     - Implement debouncing to prevent excessive updates
     - _Requirements: 3.1, 3.2, 5.5_
   
-  - [ ] 4.3 Handle different poster styles with contextual prompts
+  - [x] 4.3 Handle different poster styles with contextual prompts
     - Implement modern style with contemporary design keywords
     - Add formal style with professional and elegant descriptors
     - Create playful style with vibrant and creative elements
@@ -75,11 +75,13 @@
   - Test edge cases with missing or invalid data
   - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [ ] 5. Build prompt display component
-  - [ ] 5.1 Create PromptDisplay component
+- [-] 5. Build prompt display component
+  - [-] 5.1 Create PromptDisplay component
     - Display generated prompt in styled container
     - Implement real-time updates when form data changes
     - Add character count and prompt structure indicators
+    - no need to run vite or npm run dev, because server is already running on http://localhost:5173/
+    - use mpc chrome-devtools to verify the UI result from your changes and debugging
     - _Requirements: 3.1, 3.2_
   
   - [ ] 5.2 Add copy-to-clipboard functionality
