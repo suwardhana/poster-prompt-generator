@@ -1,4 +1,5 @@
-import React, { ReactNode, memo, useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
+import type { ReactNode } from 'react';
 import './GlassContainer.css';
 
 interface GlassContainerProps {
