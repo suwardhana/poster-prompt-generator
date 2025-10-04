@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import type { FormFieldProps } from '../../types';
 
-const FormField: React.FC<FormFieldProps> = ({ 
+const FormField: React.FC<FormFieldProps> = memo(({ 
   label, 
   value, 
   onChange, 
@@ -11,7 +11,7 @@ const FormField: React.FC<FormFieldProps> = ({
   error,
   isValid
 }) => {
-  const getInputClassName = () => {
+  const getInputClassName = useCallback(() => {
     let className = 'form-input';
     if (error) {
       className += ' form-input-error';
@@ -19,7 +19,11 @@ const FormField: React.FC<FormFieldProps> = ({
       className += ' form-input-valid';
     }
     return className;
-  };
+  }, [error, isValid]);
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value);
+  }, [onChange]);
 
   return (
     <div className="form-field">
@@ -31,13 +35,15 @@ const FormField: React.FC<FormFieldProps> = ({
         className={getInputClassName()}
         type={type}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={handleChange}
         required={required}
         placeholder={placeholder}
       />
       {error && <span className="error-message">{error}</span>}
     </div>
   );
-};
+});
+
+FormField.displayName = 'FormField';
 
 export default FormField;

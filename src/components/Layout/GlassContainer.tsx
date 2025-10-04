@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, memo, useCallback, useMemo } from 'react';
 import './GlassContainer.css';
 
 interface GlassContainerProps {
@@ -9,18 +9,25 @@ interface GlassContainerProps {
   'data-testid'?: string;
 }
 
-const GlassContainer: React.FC<GlassContainerProps> = ({ 
+const GlassContainer: React.FC<GlassContainerProps> = memo(({ 
   children, 
   className = '', 
   pulse = false,
   onClick,
   'data-testid': testId
 }) => {
-  const containerClasses = [
+  const containerClasses = useMemo(() => [
     'glass-container',
     pulse ? 'pulse' : '',
     className
-  ].filter(Boolean).join(' ');
+  ].filter(Boolean).join(' '), [pulse, className]);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      onClick();
+    }
+  }, [onClick]);
 
   return (
     <div 
@@ -29,16 +36,13 @@ const GlassContainer: React.FC<GlassContainerProps> = ({
       data-testid={testId}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
-      onKeyDown={onClick ? (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick();
-        }
-      } : undefined}
+      onKeyDown={onClick ? handleKeyDown : undefined}
     >
       {children}
     </div>
   );
-};
+});
+
+GlassContainer.displayName = 'GlassContainer';
 
 export default GlassContainer;

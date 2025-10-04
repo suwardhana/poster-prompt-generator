@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, memo, useMemo } from 'react';
 import type { EventData } from '../../types';
 import './PromptDisplay.css';
 
@@ -7,15 +7,14 @@ interface PromptDisplayProps {
   generatedPrompt: string;
 }
 
-const PromptDisplay: React.FC<PromptDisplayProps> = ({ eventData, generatedPrompt }) => {
+const PromptDisplay: React.FC<PromptDisplayProps> = memo(({ generatedPrompt }) => {
   const [copyStatus, setCopyStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  // Calculate character count
-  const characterCount = generatedPrompt.length;
-
-  // Analyze prompt structure
-  const getPromptStructure = useCallback(() => {
-    if (!generatedPrompt) return { sections: 0, keywords: 0 };
+  // Memoize prompt analysis for performance
+  const promptAnalysis = useMemo(() => {
+    if (!generatedPrompt) return { characterCount: 0, sections: 0, keywords: 0 };
+    
+    const characterCount = generatedPrompt.length;
     
     // Count sections (separated by commas or periods)
     const sections = generatedPrompt.split(/[,.]/g).filter(section => section.trim().length > 0).length;
@@ -23,10 +22,10 @@ const PromptDisplay: React.FC<PromptDisplayProps> = ({ eventData, generatedPromp
     // Count descriptive keywords (rough estimate based on adjectives and style words)
     const keywords = generatedPrompt.match(/\b(modern|contemporary|clean|elegant|professional|vibrant|playful|creative|minimalist|vintage|bold|geometric|sophisticated|dynamic|colorful)\b/gi)?.length || 0;
     
-    return { sections, keywords };
+    return { characterCount, sections, keywords };
   }, [generatedPrompt]);
 
-  const { sections, keywords } = getPromptStructure();
+  const { characterCount, sections, keywords } = promptAnalysis;
 
   // Copy to clipboard functionality
   const handleCopyToClipboard = useCallback(async () => {
@@ -157,6 +156,8 @@ const PromptDisplay: React.FC<PromptDisplayProps> = ({ eventData, generatedPromp
       )}
     </div>
   );
-};
+});
+
+PromptDisplay.displayName = 'PromptDisplay';
 
 export default PromptDisplay;

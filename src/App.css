@@ -102,8 +102,19 @@
   }
   
   .app-main {
-    grid-template-rows: auto auto;
+    grid-template-rows: auto 1fr;
     gap: var(--spacing-md);
+    min-height: 0;
+  }
+  
+  .form-section {
+    flex-shrink: 0;
+  }
+  
+  .prompt-section {
+    flex: 1;
+    min-height: 300px;
+    display: flex;
   }
   
   .app-header {
@@ -128,8 +139,25 @@
     gap: var(--spacing-sm);
   }
   
+  .form-section {
+    flex-shrink: 0;
+  }
+  
+  .prompt-section {
+    min-height: 250px;
+  }
+  
   .app-header {
     margin-bottom: var(--spacing-md);
+  }
+  
+  .app-header h1 {
+    font-size: var(--text-2xl);
+  }
+  
+  .app-header p {
+    font-size: var(--text-sm);
+    padding: 0 var(--spacing-sm);
   }
 }
 

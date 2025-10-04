@@ -53,7 +53,7 @@ export const usePromptGenerator = (eventData: EventData): PromptGeneratorHookRes
   // Initial prompt generation on mount
   useEffect(() => {
     generatePromptCallback(eventData);
-  }, []); // Empty dependency array for initial load only
+  }, [generatePromptCallback]); // Include generatePromptCallback for completeness
 
   return {
     generatedPrompt,

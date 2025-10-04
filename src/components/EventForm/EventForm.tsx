@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import type { EventData, PosterStyle, ValidationErrors } from '../../types';
 import FormField from './FormField';
 import './EventForm.css';
@@ -7,7 +7,7 @@ interface EventFormProps {
   onDataChange: (data: EventData) => void;
 }
 
-const EventForm: React.FC<EventFormProps> = ({ onDataChange }) => {
+const EventForm: React.FC<EventFormProps> = memo(({ onDataChange }) => {
   const [formData, setFormData] = useState<EventData>({
     speakerName: '',
     eventDateTime: '',
@@ -127,6 +127,8 @@ const EventForm: React.FC<EventFormProps> = ({ onDataChange }) => {
       </div>
     </div>
   );
-};
+});
+
+EventForm.displayName = 'EventForm';
 
 export default EventForm;
