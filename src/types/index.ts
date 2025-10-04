@@ -25,6 +25,16 @@ export interface FormFieldProps {
   type?: 'text' | 'email' | 'tel' | 'datetime-local';
   required?: boolean;
   placeholder?: string;
+  error?: string;
+  isValid?: boolean;
+}
+
+export interface ValidationErrors {
+  speakerName?: string;
+  eventDateTime?: string;
+  eventName?: string;
+  contactInfo?: string;
+  location?: string;
 }
 
 export interface PromptGeneratorHookResult {
