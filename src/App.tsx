@@ -26,7 +26,7 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>Poster Prompt Generator</h1>
-        <p>Create AI-optimized prompts for event posters</p>
+        <p>Create AI-optimized prompts for stunning event posters with modern glassmorphism design</p>
       </header>
       
       <main className="app-main">

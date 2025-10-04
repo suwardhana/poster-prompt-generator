@@ -8,7 +8,7 @@
   - use mpc chhrome-devtools to verify the UI result from your changes and debugging
   - _Requirements: 1.1, 2.2, 5.4_
 
-- [ ] 2. Implement glassmorphism design system
+- [x] 2. Implement glassmorphism design system
   - [x] 2.1 Create GlassContainer reusable component
     - Build glassmorphism CSS with backdrop-filter and transparency effects
     - Implement responsive design with proper breakpoints
@@ -17,10 +17,12 @@
     - use mpc chhrome-devtools to verify the UI result from your changes and debugging
     - _Requirements: 4.1, 4.2, 4.3_
   
-  - [ ] 2.2 Update global styles and layout
+  - [x] 2.2 Update global styles and layout
     - Replace default Vite styles with custom glassmorphism theme
     - Implement two-row layout structure in App component
     - Add gradient backgrounds and modern typography
+    - no need to run vite or npm run dev, because server is already running on http://localhost:5173/
+    - use mpc chrome-devtools to verify the UI result from your changes and debugging
     - _Requirements: 4.1, 4.4_
 
 - [ ] 3. Build event form component
