@@ -1,10 +1,10 @@
 import type { PromptTemplate, PosterStyle, EventData } from '../types';
 
 // Base prompt structure for AI image generation
-export const BASE_PROMPT = "Create a professional event poster with the following details:";
+export const BASE_PROMPT = "professional event poster with no human beings, typography-focused design only, with the following details:";
 
 // Technical parameters for optimal AI generation
-export const TECHNICAL_PARAMS = "high quality, 8k resolution, poster design, professional layout, clear typography, --ar 2:3 --v 6 --style raw";
+export const TECHNICAL_PARAMS = "high quality, 8k resolution, poster design, professional layout, clear typography";
 
 // Style-specific prompt templates with enhanced contextual descriptions
 export const PROMPT_TEMPLATES: Record<PosterStyle, PromptTemplate> = {
@@ -102,15 +102,15 @@ export const getPromptTemplate = (style: PosterStyle): PromptTemplate => {
 // Utility function to format event data into prompt text
 export const formatEventDetails = (eventData: EventData): string => {
   const details = [];
-  
+
   if (eventData.eventName) {
     details.push(`Event: "${eventData.eventName}"`);
   }
-  
+
   if (eventData.speakerName) {
     details.push(`Speaker: ${eventData.speakerName}`);
   }
-  
+
   if (eventData.eventDateTime) {
     const date = new Date(eventData.eventDateTime);
     const formattedDate = date.toLocaleDateString('en-US', {
@@ -126,15 +126,15 @@ export const formatEventDetails = (eventData: EventData): string => {
     });
     details.push(`Date & Time: ${formattedDate} at ${formattedTime}`);
   }
-  
+
   if (eventData.location) {
     details.push(`Location: ${eventData.location}`);
   }
-  
+
   if (eventData.contactInfo) {
     details.push(`Contact: ${eventData.contactInfo}`);
   }
-  
+
   return details.join(', ');
 };
 
@@ -144,24 +144,24 @@ export const generatePrompt = (eventData: EventData): string => {
   const eventDetails = formatEventDetails(eventData);
   const styleKeywords = template.styleModifiers.join(', ');
   const styleGuidance = getStyleGuidance(eventData.posterStyle);
-  
+
   // Build contextual prompt based on style
   let contextualPrompt = template.basePrompt;
-  
+
   // Add event details if available
   if (eventDetails) {
     contextualPrompt += ` ${eventDetails}.`;
   }
-  
+
   // Add style-specific guidance
   contextualPrompt += ` Design should feature: ${styleKeywords}.`;
-  
+
   // Add style guidance for better context
   contextualPrompt += ` ${styleGuidance}.`;
-  
+
   // Add technical parameters
   contextualPrompt += ` ${template.technicalParams}`;
-  
+
   return contextualPrompt;
 };
 
@@ -175,7 +175,7 @@ export const getStyleGuidance = (style: PosterStyle): string => {
     vintage: "Incorporate retro design elements, aged textures, and classic typography reminiscent of past eras",
     bold: "Create high visual impact with strong contrasts, dramatic typography, and striking design elements"
   };
-  
+
   return guidanceMap[style];
 };
 
@@ -189,6 +189,6 @@ export const getStyleColors = (style: PosterStyle): string[] => {
     vintage: ["#8B4513", "#DEB887", "#CD853F", "#F5DEB3"],
     bold: ["#FF0000", "#000000", "#FFFF00", "#FFFFFF"]
   };
-  
+
   return colorMap[style];
 };

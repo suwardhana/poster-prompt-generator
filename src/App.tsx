@@ -26,16 +26,16 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>Poster Prompt Generator</h1>
-        <p>Create AI-optimized prompts for stunning event posters with modern glassmorphism design</p>
+        <p>Create AI-optimized prompts for stunning event posters for your favourite Image Gen</p>
       </header>
-      
+
       <main className="app-main">
         <section className="form-section">
           <GlassContainer>
             <EventForm onDataChange={handleDataChange} />
           </GlassContainer>
         </section>
-        
+
         <section className="prompt-section">
           <GlassContainer>
             <PromptDisplay eventData={eventData} generatedPrompt={generatedPrompt} />
